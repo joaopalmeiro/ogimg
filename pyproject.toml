@@ -1,0 +1,16 @@
+[tool.pyflow]
+name = "ogimg"
+py_version = "3.7"
+version = "0.1.0"
+authors = ["João Palmeiro <joaopalmeiro@proton.me>"]
+python_requires = ">=3.7, <3.11"
+
+[tool.pyflow.scripts]
+ogimg = "ogimg.cli:main"
+
+[tool.pyflow.dependencies]
+metadata_parser = "^0.10.5"
+click = "^8.1.3"
+
+[tool.pyflow.dev-dependencies]
+black = "^22.6.0"
