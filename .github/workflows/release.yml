@@ -14,30 +14,41 @@ on:
     branches:
       - main
     paths:
-      - "pyproject.toml"
+      # - "pyproject.toml"
+      - "src/ogimg/__init__.py"
 
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     env:
-      TWINE_USERNAME: __token__
-      TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      # TWINE_USERNAME: __token__
+      # TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+      PDM_PUBLISH_USERNAME: __token__
+      PDM_PUBLISH_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      # - uses: actions/setup-python@v4
+      #   with:
+      #     python-version: 3.7
+      # - uses: actions-rs/install@v0.1
+      #   with:
+      #     crate: pyflow
+      #     version: 0.3.1
+      #     use-tool-cache: true
+      # - name: Install wheel
+      #   run: pip install wheel
+      # - name: Install dependencies
+      #   run: echo -e "1" | pyflow install
+      # - name: Build
+      #   run: pyflow package
+      # - name: Publish
+      #   run: pyflow publish
+      - uses: pdm-project/setup-pdm@v2
+        name: Setup PDM
         with:
           python-version: 3.7
-      - uses: actions-rs/install@v0.1
-        with:
-          crate: pyflow
-          version: 0.3.1
-          use-tool-cache: true
-      - name: Install wheel
-        run: pip install wheel
+          version: 2.1.0
       - name: Install dependencies
-        # run: pyflow install
-        run: echo -e "1" | pyflow install
-      - name: Build
-        run: pyflow package
-      - name: Publish
-        run: pyflow publish
+        run: pdm install
+      - name: Build and publish
+        run: pdm publish

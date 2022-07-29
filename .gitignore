@@ -8,5 +8,9 @@ __pypackages__/
 *~
 */.mypy_cache/
 
+.venv/
+.pdm.toml
+
 # Project ignores
 *.png
+formatter.toml

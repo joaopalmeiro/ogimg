@@ -1,24 +1,34 @@
-[tool.pyflow]
+[project]
 name = "ogimg"
-py_version = "3.7"
-version = "0.1.0"
-authors = ["João Palmeiro <joaopalmeiro@proton.me>"]
+dynamic = ["version"]
 description = "A Python CLI for downloading metadata images (e.g., OG images) from web pages."
-homepage = "https://github.com/joaopalmeiro/ogimg"
-repository = "https://github.com/joaopalmeiro/ogimg"
-license = "MIT"
-python_requires = ">=3.7,<3.11"
-package_url = "https://upload.pypi.org/legacy/"
+authors = [{ name = "João Palmeiro", email = "joaopalmeiro@proton.me" }]
+dependencies = ["metadata-parser>=0.10.5", "click>=8.1.3"]
+requires-python = ">=3.7"
+readme = "README.md"
+license = { text = "MIT" }
 
-[tool.pyflow.scripts]
+[project.scripts]
 ogimg = "ogimg.cli:main"
 
-[tool.pyflow.dependencies]
-metadata_parser = "^0.10.5"
-click = "^8.1.3"
+[project.urls]
+Repository = "https://github.com/joaopalmeiro/ogimg"
+Homepage = "https://github.com/joaopalmeiro/ogimg"
 
-[tool.pyflow.dev-dependencies]
-black = "^22.6.0"
-tomli = "^2.0.1"
-typed-ast = "^1.5.4"
-isort = "^5.10.1"
+[project.optional-dependencies]
+[tool.pdm]
+version = { source = "file", path = "src/ogimg/__init__.py" }
+[tool.pdm.dev-dependencies]
+format = ["black>=22.6.0", "isort>=5.10.1"]
+
+[build-system]
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py37"]
+
+[tool.isort]
+profile = "black"
+atomic = true
