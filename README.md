@@ -22,7 +22,9 @@ A Python CLI for downloading metadata images (e.g., [OG](https://ogp.me/) images
   - `pyflow install metadata_parser click`.
   - `pyflow install black --dev` and `pyflow install isort --dev`.
   - `pyflow clear` and `pyflow reset`.
+  - `pyflow -V`.
 - [tools like `black` don't work with VSCode](https://github.com/David-OConnor/pyflow/issues/31) (open) issue.
 - [Incomplete package install](https://github.com/David-OConnor/pyflow/issues/32) issue.
 - [Running ipython fails with `No module named 'pexpect'`](https://github.com/David-OConnor/pyflow/issues/168) (open) issue. `pyflow install tomli typed-ast --dev`.
 - [pyflow randomizes the order of pyflow.lock every time I run a script through it](https://github.com/David-OConnor/pyflow/issues/178) (open) issue.
+- [Twine](https://twine.readthedocs.io/en/stable/) documentation.

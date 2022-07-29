@@ -1,0 +1,38 @@
+# https://yonatankra.com/7-github-actions-tricks-i-wish-i-knew-before-i-started/
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+# https://github.com/David-OConnor/pyflow/blob/master/.github/workflows/build_and_test.yml
+# https://twine.readthedocs.io/en/stable/#configuration
+# https://github.com/joaopalmeiro/nbadge/blob/main/.github/workflows/release.yml
+# https://github.com/actions-rs/install
+# https://docs.github.com/en/actions/learn-github-actions/environment-variables
+
+name: Publish to PyPI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "pyproject.toml"
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    env:
+      user: __token__
+      password: ${{ secrets.PYPI_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.7
+      - uses: actions-rs/install@v0.1
+        with:
+          crate: pyflow
+          version: 0.3.1
+      - name: Install dependencies
+        run: pyflow install
+      - name: Build
+        run: pyflow package
+      - name: Publish
+        run: pyflow publish
