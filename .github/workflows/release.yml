@@ -32,6 +32,8 @@ jobs:
           crate: pyflow
           version: 0.3.1
           use-tool-cache: true
+      - name: Install wheel
+        run: pip install wheel
       - name: Install dependencies
         # run: pyflow install
         run: echo -e "1" | pyflow install
