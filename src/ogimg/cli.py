@@ -1,4 +1,5 @@
 import imghdr
+from urllib.parse import quote_plus
 
 import click
 import metadata_parser
@@ -16,7 +17,8 @@ def main(url: str) -> None:
     img_data = requests.get(img_url).content
     img_extension = imghdr.what("", h=img_data)
 
-    img_filename = img_url.split("/")[-1]
+    # img_filename = img_url.split("/")[-1]
+    img_filename = f"ogimg_{quote_plus(url)}"
     img_full_filename = f"{img_filename}.{img_extension}"
 
     with open(img_full_filename, "wb") as handler:
