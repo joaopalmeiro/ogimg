@@ -1,7 +1,7 @@
 [tool.pyflow]
 name = "ogimg"
 py_version = "3.7"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["João Palmeiro <joaopalmeiro@proton.me>"]
 description = "A Python CLI for downloading metadata images (e.g., OG images) from web pages."
 homepage = "https://github.com/joaopalmeiro/ogimg"
